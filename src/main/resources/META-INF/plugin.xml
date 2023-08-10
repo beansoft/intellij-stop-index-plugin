@@ -1,0 +1,65 @@
+<idea-plugin require-restart="true" url="https://plugins.jetbrains.com/plugin/15173-idle-indexing">
+  <name>Stop Indexing 索引杀手</name>
+  <id>com.jetbrains.index.stop</id>
+  <description><![CDATA[
+      <p>Makes the UI more responsive by allowing your IDE to index files only when it's allowed by menu: <b>Tools | Enable Index</b></p>
+      <br/>
+      <p>Have you ever noticed your IDE becomes less responsive when it's indexing files during the startup or on
+      opening a project? The Stop Indexing plugin allows your IDE to index files only when the IDE is allowed or
+      suspends indexing immediately when the menu changes or IDE got restarted.
+      The plugin frees up your CPU, so it can be very responsive to your keyboard input and mouse events or open project.
+      The default behavior is suspends indexing.</p>
+      <br/>
+      <p>Pros:</p>
+      <ul>
+        <li><b>More responsive UI</b> ⚡ while indexing is suspender</li>
+      </ul>
+      <p>Cons:</p>
+      <ul>
+        <li>Incomplete code insight results while indexing is in progress</li>
+        <li>The IDE disables some actions while indexing is in progress such as jump to definition</li>
+      </ul>
+      <br/>
+      <p>⬇️ Install the Stop Indexing plugin and check if it improves your experience during open very big project.</p>
+      <br/>
+    ]]></description>
+  <version>0.1.0</version>
+  <vendor url="https://github.com/beansoft">BeanSoft</vendor>
+
+  <change-notes><![CDATA[
+    <p>0.1.0:</p>
+    <ul>
+      <li>Init version: check menu <b>Tools | Enable Index</b></li>
+      <li>Compatibility with 2021.3+</li>
+    </ul>
+  ]]></change-notes>
+
+  <idea-version since-build="213"/>
+
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <applicationService serviceImplementation="beansoft.github.jetbrains.stopidex.IndexStatusSettings"/>
+    <toolWindow id="插件精选"
+                anchor="left" secondary="false"
+                doNotActivateOnStart="false" canCloseContents="false"
+                icon="AllIcons.Nodes.Plugin"
+                factoryClass="beansoft.github.jetbrains.plugins.RecommendedPluginsToolWindowFactory"/>
+  </extensions>
+
+  <!--suppress PluginXmlValidity -->
+  <applicationListeners>
+    <listener class="beansoft.github.jetbrains.stopidex.IndexSuspenderListener"
+              topic="com.intellij.openapi.progress.impl.ProgressSuspender$SuspenderListener"/>
+  </applicationListeners>
+
+  <!--suppress PluginXmlValidity -->
+  <projectListeners>
+  </projectListeners>
+  <actions>
+    <action id="enableIndex" class="beansoft.github.jetbrains.stopidex.IndexToggleAction" text="Enable Index"
+            description="Toggle enable or disable index">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+  </actions>
+</idea-plugin>

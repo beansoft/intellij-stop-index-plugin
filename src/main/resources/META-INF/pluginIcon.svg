@@ -1,0 +1,12 @@
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+    <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+    <g>
+        <title>Layer 1</title>
+        <rect id="svg_1" height="2" width="13" y="28" x="2" stroke-width="1.5" stroke="#548AF7" fill="#548AF7"/>
+        <rect id="svg_2" height="2" width="22" y="28" x="16" stroke-width="1.5" stroke="#6C707E" fill="#6C707E"/>
+        <text font-weight="bold" xml:space="preserve" text-anchor="start"
+              font-family="Helvetica, Arial, sans-serif" font-size="10" id="svg_3" y="21.37502" x="5.87488"
+              stroke-width="0" stroke="#FFAF0F" fill="#FFAF0F">STOP</text>
+    </g>
+</svg>

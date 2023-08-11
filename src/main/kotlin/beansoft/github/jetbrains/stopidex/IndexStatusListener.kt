@@ -9,12 +9,12 @@ import com.intellij.util.messages.Topic
  * Listens to changes to global action schema [IndexStatusListener.getInstance].
  *
  * Use [IndexStatusListener.subscribe] to start listening to changes or
- * [IndexStatusListener.fireServerStatusChanged] to notify all listeners about changes.
+ * [IndexStatusListener.fireIndexStatusChanged] to notify all listeners about changes.
  */
 open interface IndexStatusListener {
 
   /**
-   * Is called when global action schema is changed.
+   * Is called when index status is changed.
    *
    * So toolbars can be dynamically updated according to these changes.
    */
@@ -24,7 +24,7 @@ open interface IndexStatusListener {
     private val TOPIC = Topic.create("Index Status changed", IndexStatusListener::class.java)
 
     /**
-     * Subscribe for changes in global action schema.
+     * Subscribe for changes in index status.
      */
     @JvmStatic
     fun subscribe(disposable: Disposable, listener: IndexStatusListener) {
@@ -37,10 +37,10 @@ open interface IndexStatusListener {
     }
 
     /**
-     * Notify all listeners about global server status/log changes.
+     * Notify all listeners about index status changes.
      */
     @JvmStatic
-    fun fireServerStatusChanged(enable:Boolean) {
+    fun fireIndexStatusChanged(enable:Boolean) {
       ApplicationManager.getApplication().messageBus.syncPublisher(TOPIC).statusChanged(enable)
     }
   }

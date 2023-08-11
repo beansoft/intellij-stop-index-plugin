@@ -11,7 +11,7 @@ class IndexToggleAction : ToggleAction() {
     override fun setSelected(event: AnActionEvent, flag: Boolean) {
         IndexStatusSettings.getInstance().enableIndex = flag
 
-        IndexStatusListener.fireServerStatusChanged(flag)
+        IndexStatusListener.fireIndexStatusChanged(flag)
     }
 
     override fun isDumbAware(): Boolean {

@@ -35,15 +35,15 @@ class IndexSuspenderListener : ProgressSuspender.SuspenderListener, Disposable {
      * 	at beansoft.github.jetbrains.stopidex.IndexSuspenderListener.<init>(IndexSuspenderListener.kt:27)
      * 	at com.intellij.serviceContainer.ComponentManagerImpl.instantiateClass(ComponentManagerImpl.kt:993)
      */
-//    IndexStatusListener.subscribe(this, object : IndexStatusListener {
-//      override fun statusChanged(enable: Boolean) {
-//        if (!enable) {
-//          suspendActiveProcesses()
-//        } else {
-//          resumeSuspendedProcesses()
-//        }
-//      }
-//    })
+    IndexStatusListener.subscribe(this, object : IndexStatusListener {
+      override fun statusChanged(enable: Boolean) {
+        if (!enable) {
+          suspendActiveProcesses()
+        } else {
+          resumeSuspendedProcesses()
+        }
+      }
+    })
   }
 
   companion object {
